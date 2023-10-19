@@ -1,32 +1,12 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 import CarCard from 'components/CarCard/CarCard';
-import axios from 'axios';
 
 import { ListCar } from './CarList.styled';
 import ButtonLoadMore from 'components/ButtonLoadMore/ButtonLoadMore';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { fetchCars } from 'redux/cars/carsOperations';
 
-const CarList = () => {
-    const [cars, setCars] = useState([]);
-    const [page, setPage] = useState(1);
-
-    const changePage = () => {
-        setPage(prevState => prevState + 1);
-
-        console.log(page);
-    };
-
-    useEffect(() => {
-        const func = async () => {
-            const response = await axios(
-                `https://64be66165ee688b6250c5763.mockapi.io/api/v1/adverts?page=${page}&limit=8`
-            );
-            console.log(response);
-            setCars(response.data);
-        };
-
-        func();
-    }, [page]);
-
+const CarList = ({ cars, changePage, showLoadMore }) => {
     return (
         <div>
             <ListCar>
@@ -35,7 +15,7 @@ const CarList = () => {
                 ))}
             </ListCar>
 
-            <ButtonLoadMore changePage={changePage} />
+            {showLoadMore && <ButtonLoadMore changePage={changePage} />}
         </div>
     );
 };
