@@ -12,22 +12,24 @@ const Catalog = () => {
 
     const dispatch = useDispatch();
 
-    const changePage = () => {
+    const changePage = async () => {
         setPage(prevState => prevState + 1);
 
-        console.log(page);
+        const response = await dispatch(fetchCars(page + 1));
+        // console.log(response);
+        // console.log(response.payload.data.length < 8);
+        if (response.payload.data.length < 8) {
+            // console.log('objectobjk');
+            setShowLoadMore(false);
+        }
+
+        // console.log(page);
     };
 
     useEffect(() => {
-        const func = async () => {
-            const response = await dispatch(fetchCars(page));
-            console.log(response.payload.length < 8);
-            if (response.payload.length < 8) {
-                setShowLoadMore(false);
-            }
-        };
-
-        func();
+        if (page === 1) {
+            dispatch(fetchCars(1));
+        }
     }, [dispatch, page]);
 
     return (

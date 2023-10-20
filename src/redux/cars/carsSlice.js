@@ -23,14 +23,19 @@ export const carSlice = createSlice({
                 //     state.cars = action.payload;
                 // }
 
-                console.log(state.cars.length);
-                console.log(action.payload);
+                // console.log(state.cars.length);
+                // console.log(action);
 
                 // state.cars = action.payload;
                 // state.cars.push(...action.payload);
 
                 // state.cars = [...state.cars, ...action.payload];
-                state.cars = [...state.cars, ...action.payload];
+
+                if (action.payload.page === 1) {
+                    state.cars = action.payload.data;
+                } else {
+                    state.cars = [...state.cars, ...action.payload.data];
+                }
 
                 state.loading = false;
             })

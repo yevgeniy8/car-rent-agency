@@ -12,6 +12,8 @@ import {
     Button,
 } from './CarCard.styled';
 
+import car_default from '../../images/car-default.webp';
+
 import sprite from '../../images/icons.svg';
 
 import Modal from 'components/Modal/Modal';
@@ -25,6 +27,8 @@ import { useDispatch, useSelector } from 'react-redux';
 const CarCard = ({ item }) => {
     const [inFavorite, setInFavorite] = useState(false);
     const [isOpenModal, setIsOpenModal] = useState(false);
+
+    const [image, setImage] = useState();
 
     const favoriteCars = useSelector(state => state.favorite.favoriteCars);
 
@@ -57,6 +61,22 @@ const CarCard = ({ item }) => {
         setIsOpenModal(prevState => !prevState);
     };
 
+    const loadImage = async imageUrl => {
+        try {
+            const response = await fetch(imageUrl);
+            if (response.ok) {
+                setImage(imageUrl);
+                return imageUrl;
+            }
+        } catch (error) {
+            console.error('Помилка завантаження зображення:', error);
+        }
+        setImage(car_default);
+        return car_default; // Використовуємо дефолтне зображення у разі помилки
+    };
+
+    loadImage(item.img || item.photoLink);
+
     return (
         <CardCar key={item.id}>
             <ImageGradient>
@@ -69,7 +89,7 @@ const CarCard = ({ item }) => {
                         }
                     />
                 </Svg>
-                <Image src={item.img || item.photoLink} alt="" />
+                <Image src={image || item.photoLink} alt="" />
             </ImageGradient>
 
             <StartDescription>

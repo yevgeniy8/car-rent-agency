@@ -38,7 +38,12 @@ const FullInformationByCar = ({ car, toggleModal }) => {
                     <use href={`${sprite}#icon-close`} />
                 </Svg>
             </ButtonClose>
-            <Image src={car.img} alt="" width={461} height={248} />
+            <Image
+                src={car.img || car.photoLink}
+                alt=""
+                width={461}
+                height={248}
+            />
             <Make>
                 {car.make} <Model>{car.model}</Model>, {car.year}
             </Make>
