@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
     ButtonClose,
@@ -17,19 +17,46 @@ import {
 
 import { Model, Description } from 'components/CarCard/CarCard.styled';
 
+import car_default from '../../images/car-default.webp';
+
 import sprite from '../../images/icons.svg';
 
 const FullInformationByCar = ({ car, toggleModal }) => {
+    const [image, setImage] = useState();
+
     const rentalConditions = car.rentalConditions.split('\n');
 
     // console.log(car.mileage.toString().split('').splice(1, 0, ','));
 
-    const mileage = car.mileage.toString().split('');
-    console.log(mileage.splice(1, 0, ',').join(''));
+    // car.mileage.toString().split('');
+    // console.log(car.mileage);
+
+    const carMileagemassive = car.mileage.toString().split('');
+    carMileagemassive.splice(1, 0, ',');
+    // console.log(massive.join(''));
+    // console.log(car.mileage.toString().split('').splice(1, 0, ','));
 
     const handleClickClose = () => {
         toggleModal();
     };
+
+    const loadImage = async imageUrl => {
+        try {
+            const response = await fetch(imageUrl);
+            if (response.ok) {
+                setImage(imageUrl);
+                return imageUrl;
+            }
+        } catch (error) {
+            console.error('Помилка завантаження зображення:', error);
+        }
+        setImage(car_default);
+        return car_default;
+    };
+
+    useEffect(() => {
+        loadImage(car.img || car.photoLink);
+    }, [car.img, car.photoLink]);
 
     return (
         <div>
@@ -38,12 +65,7 @@ const FullInformationByCar = ({ car, toggleModal }) => {
                     <use href={`${sprite}#icon-close`} />
                 </Svg>
             </ButtonClose>
-            <Image
-                src={car.img || car.photoLink}
-                alt=""
-                width={461}
-                height={248}
-            />
+            <Image src={image} alt="" width={461} height={248} />
             <Make>
                 {car.make} <Model>{car.model}</Model>, {car.year}
             </Make>
@@ -84,7 +106,7 @@ const FullInformationByCar = ({ car, toggleModal }) => {
                 <RentalConditionsStyled>
                     Mileage:{' '}
                     <SecondConditionsStyledBlue>
-                        {mileage}
+                        {carMileagemassive.join('')}
                     </SecondConditionsStyledBlue>
                 </RentalConditionsStyled>
                 <RentalConditionsStyled>

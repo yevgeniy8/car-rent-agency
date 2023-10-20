@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 
 import { Backdrop, ModalWrapper } from './Modal.styled';
+import { createPortal } from 'react-dom';
+
+const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ toggleModal, children }) => {
     useEffect(() => {
@@ -22,10 +25,11 @@ const Modal = ({ toggleModal, children }) => {
         }
     };
 
-    return (
+    return createPortal(
         <Backdrop onClick={handleClickBackDrop}>
             <ModalWrapper>{children}</ModalWrapper>
-        </Backdrop>
+        </Backdrop>,
+        modalRoot
     );
 };
 

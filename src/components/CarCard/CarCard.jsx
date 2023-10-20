@@ -72,10 +72,12 @@ const CarCard = ({ item }) => {
             console.error('Помилка завантаження зображення:', error);
         }
         setImage(car_default);
-        return car_default; // Використовуємо дефолтне зображення у разі помилки
+        return car_default;
     };
 
-    loadImage(item.img || item.photoLink);
+    useEffect(() => {
+        loadImage(item.img || item.photoLink);
+    }, [item.img, item.photoLink]);
 
     return (
         <CardCar key={item.id}>
@@ -89,7 +91,7 @@ const CarCard = ({ item }) => {
                         }
                     />
                 </Svg>
-                <Image src={image || item.photoLink} alt="" />
+                <Image src={image} alt="" />
             </ImageGradient>
 
             <StartDescription>
