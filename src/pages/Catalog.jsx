@@ -32,7 +32,7 @@ const Catalog = () => {
         }
     }, [dispatch, page]);
 
-    const visibleCars = async () => {
+    const visibleCars = () => {
         if (
             filter.brand === '' &&
             filter.price === '' &&
