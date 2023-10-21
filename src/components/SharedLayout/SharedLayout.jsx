@@ -1,23 +1,26 @@
 import React, { Suspense } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
-import { Container } from './SharedLayout.styled';
+import { Outlet } from 'react-router-dom';
+import { Container, Main } from './SharedLayout.styled';
+import SideBar from 'components/SideBar/SideBar';
 
 const SharedLayout = () => {
     return (
         <Container>
-            <header>
+            <SideBar />
+
+            {/* <header>
                 <nav>
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/catalog">Catalog</NavLink>
                     <NavLink to="/favorite">Favorite</NavLink>
                 </nav>
-            </header>
+            </header> */}
 
-            <main>
+            <Main>
                 <Suspense fallback={null}>
                     <Outlet />
                 </Suspense>
-            </main>
+            </Main>
         </Container>
     );
 };
