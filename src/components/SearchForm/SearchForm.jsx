@@ -10,7 +10,7 @@ import {
     Inputs,
     WrapperInput,
     LabelHolder,
-    ButtonSearch,
+    ButtonForm,
 } from './SearchForm.styled';
 
 import Select from 'react-select';
@@ -21,8 +21,9 @@ import { changeFilter } from 'redux/filter/filterSlice';
 
 import brandOpt from '../../data/makes.json';
 import { useDispatch } from 'react-redux';
+import { fetchCars } from 'redux/cars/carsOperations';
 
-const SearchForm = () => {
+const SearchForm = ({ setIsFiltering, setShowLoadMore }) => {
     const dispatch = useDispatch();
 
     const [brand, setBrand] = useState({
@@ -70,9 +71,40 @@ const SearchForm = () => {
     const handleClickSearch = evt => {
         evt.preventDefault();
 
+        setIsFiltering(true);
+
         // console.log({ brand, price, mileage });
 
         dispatch(changeFilter({ brand, price, mileage }));
+    };
+
+    const handleClickClear = evt => {
+        evt.preventDefault();
+
+        dispatch(fetchCars(1));
+
+        setIsFiltering(false);
+        setShowLoadMore(true);
+
+        setBrand({
+            value: '',
+            label: 'Enter the text',
+        });
+
+        setPrice({
+            value: '',
+            label: 'To $',
+        });
+
+        setMileage({ from: '', to: '' });
+
+        dispatch(
+            changeFilter({
+                brand: { value: '' },
+                price: { value: '' },
+                mileage: { from: '', to: '' },
+            })
+        );
     };
 
     return (
@@ -145,7 +177,9 @@ const SearchForm = () => {
                     </Inputs>
                 </label>
 
-                <ButtonSearch onClick={handleClickSearch}>Search</ButtonSearch>
+                <ButtonForm onClick={handleClickSearch}>Search</ButtonForm>
+
+                <ButtonForm onClick={handleClickClear}>Clear</ButtonForm>
             </Form>
         </div>
     );

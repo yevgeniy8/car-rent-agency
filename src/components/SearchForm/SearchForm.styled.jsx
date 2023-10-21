@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Form = styled.form`
     display: flex;
-    padding-top: 100px;
+    padding-top: 50px;
     margin-bottom: 50px;
     justify-content: center;
     align-items: flex-end;
@@ -80,7 +80,7 @@ export const LabelHolder = styled.label`
     line-height: 1.11;
 `;
 
-export const ButtonSearch = styled.button`
+export const ButtonForm = styled.button`
     width: 136px;
     height: 48px;
     padding: 14px 0;
@@ -96,4 +96,6 @@ export const ButtonSearch = styled.button`
     font-style: normal;
     font-weight: 600;
     line-height: 1.43;
+
+    margin-left: 10px;
 `;
