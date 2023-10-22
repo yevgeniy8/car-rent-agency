@@ -27,8 +27,8 @@ const HomeInformation = () => {
             <Title>Welcome to Car Rent Agency</Title>
             <Description>
                 Are you looking for the perfect car for travel and vacations?
-                "Free Road" is what you need! We offer the widest selection of
-                quality cars for every taste and budget.
+                Car Rent Agency is what you need! We offer the widest selection
+                of quality cars for every taste and budget.
             </Description>
 
             <ListDescription>Our services include:</ListDescription>
