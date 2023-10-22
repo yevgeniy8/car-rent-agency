@@ -95,8 +95,6 @@ const Catalog = () => {
         }
     };
 
-    // console.log(isLoading);
-
     return (
         <div>
             <SearchForm

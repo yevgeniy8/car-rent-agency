@@ -42,7 +42,6 @@ const SearchForm = ({ setIsFiltering, setShowLoadMore }) => {
     };
 
     const handleSelectPrice = option => {
-        // console.log(option);
         setPrice({
             value: `$${option.value}`,
             label: `To ${option.label}$`,
@@ -72,8 +71,6 @@ const SearchForm = ({ setIsFiltering, setShowLoadMore }) => {
         evt.preventDefault();
 
         setIsFiltering(true);
-
-        // console.log({ brand, price, mileage });
 
         dispatch(
             changeFilter({

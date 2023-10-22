@@ -19,8 +19,6 @@ import sprite from '../../images/icons.svg';
 import Modal from 'components/Modal/Modal';
 import FullInformationByCar from 'components/FullInformationByCar/FullInformationByCar';
 
-// import { fetchCarById } from 'redux/cars/carsOperations';
-
 import { addFavorite, deleteFavorite } from 'redux/favorite/favoriteCarsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 

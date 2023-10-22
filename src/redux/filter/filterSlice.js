@@ -11,7 +11,6 @@ export const filterSlice = createSlice({
     initialState: initialState,
     reducers: {
         changeFilter: (state, action) => {
-            // console.log(action);
             state.brand = action.payload.brand.value;
             state.price = action.payload.price.value;
             state.mileage = action.payload.mileage;

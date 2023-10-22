@@ -10,6 +10,4 @@ export const Main = styled.main`
     margin-left: 220px;
     padding-left: 12px;
     padding-right: 12px;
-
-    /* padding-bottom: 100px; */
 `;

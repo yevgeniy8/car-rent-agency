@@ -14,8 +14,6 @@ export const favoriteSlice = createSlice({
             state.favoriteCars.push(action.payload);
         },
         deleteFavorite: (state, action) => {
-            // console.log(action);
-
             state.favoriteCars = state.favoriteCars.filter(
                 item => item.id !== action.payload
             );

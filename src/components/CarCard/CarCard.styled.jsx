@@ -83,8 +83,6 @@ export const RentalPrice = styled.span`
     font-style: normal;
     font-weight: 500;
     line-height: 1.5;
-
-    /* margin-left: 87px; */
 `;
 
 export const Description = styled.p`
@@ -93,7 +91,7 @@ export const Description = styled.p`
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
-    line-height: 1.5; /* 150% */
+    line-height: 1.5;
 
     overflow: hidden;
     white-space: nowrap;
@@ -109,7 +107,6 @@ export const Button = styled.button`
     padding: 12px 0;
     justify-content: center;
     align-items: center;
-    /* flex-shrink: 0; */
 
     outline: none;
     border: none;

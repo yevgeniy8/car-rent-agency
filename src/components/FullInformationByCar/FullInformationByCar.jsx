@@ -26,15 +26,8 @@ const FullInformationByCar = ({ car, toggleModal }) => {
 
     const rentalConditions = car.rentalConditions.split('\n');
 
-    // console.log(car.mileage.toString().split('').splice(1, 0, ','));
-
-    // car.mileage.toString().split('');
-    // console.log(car.mileage);
-
     const carMileagemassive = car.mileage.toString().split('');
     carMileagemassive.splice(1, 0, ',');
-    // console.log(massive.join(''));
-    // console.log(car.mileage.toString().split('').splice(1, 0, ','));
 
     const handleClickClose = () => {
         toggleModal();

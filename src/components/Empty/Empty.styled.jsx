@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 export const EmptyWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Центрує вертикально */
-    align-items: center; /* Центрує горизонтально */
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
 `;
 

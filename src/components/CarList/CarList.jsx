@@ -1,4 +1,3 @@
-// import React, { useEffect, useState } from 'react';
 import CarCard from 'components/CarCard/CarCard';
 
 import { ListCar } from './CarList.styled';
@@ -36,7 +35,6 @@ const Loading = styled.div`
     line-height: 1.5;
 
     display: block;
-    /* margin: 0 auto; */
 
     margin-bottom: 100px;
 

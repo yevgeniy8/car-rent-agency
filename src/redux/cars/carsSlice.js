@@ -29,17 +29,6 @@ export const carSlice = createSlice({
                 state.error = action.payload;
                 state.loading = false;
             });
-        // .addCase(fetchCarsAll.pending, state => {
-        //     state.loading = true;
-        // })
-        // .addCase(fetchCarsAll.fulfilled, (state, action) => {
-        //     state.cars = action.payload;
-        //     state.loading = false;
-        // })
-        // .addCase(fetchCarsAll.rejected, (state, action) => {
-        //     state.error = action.payload;
-        //     state.loading = false;
-        // });
     },
 });
 
