@@ -21,5 +21,5 @@ export const ModalWrapper = styled.div`
     padding: 40px;
 
     width: 541px;
-    height: 752px;
+    min-height: 752px;
 `;

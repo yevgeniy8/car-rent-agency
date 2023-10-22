@@ -116,7 +116,7 @@ const FullInformationByCar = ({ car, toggleModal }) => {
                     </SecondConditionsStyledBlue>
                 </RentalConditionsStyled>
             </WrapperConditions>
-            <Button>Rental car</Button>
+            <Button to="tel:+380730000000">Rental car</Button>
         </div>
     );
 };

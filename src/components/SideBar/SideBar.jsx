@@ -1,16 +1,16 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Navigation } from './SideBar.styled';
+import { Header, Title, Navigation, NavigLink } from './SideBar.styled';
 
 const SideBar = () => {
     return (
-        <header>
+        <Header>
+            <Title>Car Rent Agency</Title>
             <Navigation>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/catalog">Catalog</NavLink>
-                <NavLink to="/favorite">Favorite</NavLink>
+                <NavigLink to="/">Home</NavigLink>
+                <NavigLink to="/catalog">Catalog</NavigLink>
+                <NavigLink to="/favorites">Favorites</NavigLink>
             </Navigation>
-        </header>
+        </Header>
     );
 };
 

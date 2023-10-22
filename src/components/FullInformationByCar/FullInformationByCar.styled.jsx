@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 
 export const ButtonClose = styled.button`
     position: absolute;
@@ -116,7 +117,8 @@ export const SecondConditionsStyledBlue = styled.span`
     letter-spacing: -0.24px;
 `;
 
-export const Button = styled.button`
+export const Button = styled(NavLink)`
+    display: block;
     border-radius: 12px;
     padding: 12px 50px;
     background-color: #3470ff;
@@ -134,5 +136,5 @@ export const Button = styled.button`
     font-weight: 600;
     line-height: 1.43;
 
-    margin-top: 16px;
+    margin-top: 24px;
 `;

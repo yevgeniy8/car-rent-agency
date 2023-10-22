@@ -75,7 +75,16 @@ const SearchForm = ({ setIsFiltering, setShowLoadMore }) => {
 
         // console.log({ brand, price, mileage });
 
-        dispatch(changeFilter({ brand, price, mileage }));
+        dispatch(
+            changeFilter({
+                brand,
+                price,
+                mileage: {
+                    from: mileage.from?.split(',').join(''),
+                    to: mileage.to?.split(',').join(''),
+                },
+            })
+        );
     };
 
     const handleClickClear = evt => {
@@ -161,6 +170,10 @@ const SearchForm = ({ setIsFiltering, setShowLoadMore }) => {
                                 id="from"
                                 value={mileage.from}
                                 onChange={handleChangeMileage}
+                                format="##,###"
+                                maxLength={6}
+                                decimalScale={3}
+                                thousandSeparator={true}
                             />
                         </WrapperInput>
 
@@ -172,14 +185,38 @@ const SearchForm = ({ setIsFiltering, setShowLoadMore }) => {
                                 id="to"
                                 value={mileage.to}
                                 onChange={handleChangeMileage}
+                                format="##,###"
+                                maxLength={6}
+                                decimalScale={3}
+                                thousandSeparator={true}
                             />
                         </WrapperInput>
                     </Inputs>
                 </label>
 
-                <ButtonForm onClick={handleClickSearch}>Search</ButtonForm>
+                <ButtonForm
+                    disabled={
+                        brand.value === '' &&
+                        price.value === '' &&
+                        mileage.from === '' &&
+                        mileage.to === ''
+                    }
+                    onClick={handleClickSearch}
+                >
+                    Search
+                </ButtonForm>
 
-                <ButtonForm onClick={handleClickClear}>Clear</ButtonForm>
+                <ButtonForm
+                    disabled={
+                        brand.value === '' &&
+                        price.value === '' &&
+                        mileage.from === '' &&
+                        mileage.to === ''
+                    }
+                    onClick={handleClickClear}
+                >
+                    Clear
+                </ButtonForm>
             </Form>
         </div>
     );

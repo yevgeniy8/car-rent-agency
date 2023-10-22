@@ -6,7 +6,7 @@ export const ButtonMore = styled.button`
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    line-height: 1.5; /* 150% */
+    line-height: 1.5;
     text-decoration-line: underline;
 
     background-color: white;
@@ -14,12 +14,9 @@ export const ButtonMore = styled.button`
     display: block;
     margin: 0 auto;
 
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-
     outline: none;
     border: none;
 
-    margin-top: 100px;
+    /* margin-top: 100px; */
+    margin-bottom: 100px;
 `;

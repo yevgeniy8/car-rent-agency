@@ -3,8 +3,7 @@ import CarList from 'components/CarList/CarList';
 import SearchForm from 'components/SearchForm/SearchForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCars, fetchCarsAll } from 'redux/cars/carsOperations';
-
-// import { fetchCarsAll } from 'redux/cars/carsOperations';
+import styled from '@emotion/styled';
 
 const Catalog = () => {
     const [page, setPage] = useState(1);
@@ -35,8 +34,6 @@ const Catalog = () => {
             setShowLoadMore(true);
             dispatch(fetchCars(1));
         }
-
-        // return () => setIsFiltering(false);
     }, [dispatch, page]);
 
     useEffect(() => {
@@ -48,8 +45,6 @@ const Catalog = () => {
             };
             func();
         }
-
-        // return () => setIsFiltering(false);
     }, [dispatch, isFiltering]);
 
     const visibleCars = () => {
@@ -100,19 +95,34 @@ const Catalog = () => {
         }
     };
 
+    // console.log(isLoading);
+
     return (
         <div>
             <SearchForm
                 setIsFiltering={setIsFiltering}
                 setShowLoadMore={setShowLoadMore}
             />
-            <CarList
-                cars={visibleCars()}
-                changePage={changePage}
-                showLoadMore={showLoadMore}
-            />
+
+            {isFiltering && visibleCars().length === 0 ? (
+                <ErrorSearch>
+                    Sorry, no results were found for these parameters. try
+                    changing them...
+                </ErrorSearch>
+            ) : (
+                <CarList
+                    cars={visibleCars()}
+                    changePage={changePage}
+                    showLoadMore={showLoadMore}
+                    isFiltering={isFiltering}
+                />
+            )}
         </div>
     );
 };
+
+const ErrorSearch = styled.div`
+    text-align: center;
+`;
 
 export default Catalog;

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { NumericFormat } from 'react-number-format';
 
 export const Form = styled.form`
     display: flex;
@@ -30,7 +31,7 @@ export const WrapperPrice = styled.div`
     margin-right: 18px;
 `;
 
-export const Input = styled.input`
+export const Input = styled(NumericFormat)`
     width: 160px;
     height: 48px;
     outline: none;
@@ -85,7 +86,7 @@ export const ButtonForm = styled.button`
     height: 48px;
     padding: 14px 0;
     border-radius: 12px;
-    background: #3470ff;
+    background-color: #3470ff;
 
     outline: none;
     border: none;
@@ -98,4 +99,9 @@ export const ButtonForm = styled.button`
     line-height: 1.43;
 
     margin-left: 10px;
+
+    &:disabled {
+        background-color: rgb(203, 196, 196);
+        cursor: not-allowed;
+    }
 `;
