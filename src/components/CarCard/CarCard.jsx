@@ -13,7 +13,6 @@ import {
 } from './CarCard.styled';
 
 import car_default from '../../images/car-default.webp';
-
 import sprite from '../../images/icons.svg';
 
 import Modal from 'components/Modal/Modal';
